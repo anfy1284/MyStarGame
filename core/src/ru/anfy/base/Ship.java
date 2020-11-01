@@ -27,11 +27,29 @@ public abstract class Ship extends Sprite {
 
     protected int hp;
 
+    protected Vector2 warpV;
+    protected float warpTime;
+    protected float warpTimer;
+
+    public void setWarpMode(boolean warpMode) {
+        this.warpMode = warpMode;
+        if(warpMode) {
+            warpTimer = 0;
+            showTail = true;
+        }else{
+            showTail = false;
+        }
+        reloadTimer = reloadInterval;
+    }
+
+    protected boolean warpMode;
+
     public Ship() {
         v = new Vector2();
         v0 = new Vector2();
         bulletV = new Vector2();
         bulletPos = new Vector2();
+        warpMode = false;
     }
 
     public Ship(TextureRegion region, int rows, int cols, int frames) {
@@ -44,7 +62,19 @@ public abstract class Ship extends Sprite {
 
     @Override
     public void update(float delta) {
+
+        if(warpMode){
+            pos.mulAdd(warpV, delta);
+            warpTimer += delta;
+            if(warpTimer > warpTime){
+                showTail = false;
+                warpMode = false;
+            }
+            return;
+        }
+
         super.update(delta);
+
         pos.mulAdd(v, delta);
         reloadTimer += delta;
         if (reloadTimer >= reloadInterval) {
@@ -58,4 +88,5 @@ public abstract class Ship extends Sprite {
         bullet.set(this, bulletRegion, bulletPos, bulletV, worldBounds, damage, bulletHeight);
         bulletSound.play();
     }
+
 }

@@ -28,5 +28,9 @@ public class EnemySmallSettingsDto extends EnemySettingsDto {
         setReloadInterval(ENEMY_SMALL_RELOAD_INTERVAL);
         setHeight(ENEMY_SMALL_HEIGHT);
         setHp(ENEMY_SMALL_HP);
+        setExpectation(0.5f);
+        setWarpTime(0.0f);
+        setWarpV(new Vector2(0f, -0.65f));
+        setWarpMode(false);
     }
 }

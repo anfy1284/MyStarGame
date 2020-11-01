@@ -25,12 +25,12 @@ public class GameScreen extends BaseScreen {
     private Music music;
     private Sound enemyBulletSound;
 
-    private ru.anfy.sprite.Background background;
-    private ru.anfy.sprite.Star[] stars;
+    private Background background;
+    private Star[] stars;
     private BulletPool bulletPool;
     private EnemyShipPool enemyShipPool;
-    private ru.anfy.sprite.MainShip mainShip;
-    private ru.anfy.utils.EnemyEmitter enemyEmitter;
+    private MainShip mainShip;
+    private EnemyEmitter enemyEmitter;
 
     @Override
     public void show() {

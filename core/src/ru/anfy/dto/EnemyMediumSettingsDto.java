@@ -28,5 +28,9 @@ public class EnemyMediumSettingsDto extends EnemySettingsDto {
         setReloadInterval(ENEMY_MEDIUM_RELOAD_INTERVAL);
         setHeight(ENEMY_MEDIUM_HEIGHT);
         setHp(ENEMY_MEDIUM_HP);
+        setExpectation(0.3f);
+        setWarpTime(0.3f);
+        setWarpV(new Vector2(0f, -0.65f));
+        setWarpMode(true);
     }
 }

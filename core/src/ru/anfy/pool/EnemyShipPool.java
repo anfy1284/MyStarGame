@@ -4,7 +4,7 @@ import ru.anfy.math.Rect;
 import ru.anfy.sprite.EnemyShip;
 import ru.anfy.base.SpritesPool;
 
-public class EnemyShipPool extends SpritesPool<ru.anfy.sprite.EnemyShip> {
+public class EnemyShipPool extends SpritesPool<EnemyShip> {
 
     private ru.anfy.pool.BulletPool bulletPool;
     private ru.anfy.math.Rect worldBounds;
@@ -15,7 +15,10 @@ public class EnemyShipPool extends SpritesPool<ru.anfy.sprite.EnemyShip> {
     }
 
     @Override
-    protected ru.anfy.sprite.EnemyShip newObject() {
-        return new EnemyShip(bulletPool, worldBounds);
+    protected EnemyShip newObject() {
+        EnemyShip newShip = new EnemyShip(bulletPool, worldBounds);
+        newShip.setTail(50);
+        return newShip;
     }
+
 }

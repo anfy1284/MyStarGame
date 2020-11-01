@@ -28,5 +28,9 @@ public class EnemyBigSettingsDto extends EnemySettingsDto {
         setReloadInterval(ENEMY_BIG_RELOAD_INTERVAL);
         setHeight(ENEMY_BIG_HEIGHT);
         setHp(ENEMY_BIG_HP);
+        setExpectation(0.1f);
+        setWarpTime(0.3f);
+        setWarpV(new Vector2(0f, -0.65f));
+        setWarpMode(true);
     }
 }

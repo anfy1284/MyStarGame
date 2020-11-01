@@ -7,6 +7,7 @@ import ru.anfy.pool.BulletPool;
 
 public class EnemyShip extends Ship {
 
+
     public EnemyShip(BulletPool bulletPool, Rect worldBounds) {
         this.bulletPool = bulletPool;
         this.worldBounds = worldBounds;
@@ -32,6 +33,9 @@ public class EnemyShip extends Ship {
         this.reloadInterval = settings.getReloadInterval();
         setHeightProportion(settings.getHeight());
         this.hp = settings.getHp();
+        this.warpTime = settings.getWarpTime();
+        this.warpV = settings.getWarpV();
+        this.setWarpMode(settings.getWarpMode());
     }
 
 }

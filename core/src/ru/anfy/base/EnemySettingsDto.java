@@ -16,6 +16,44 @@ public abstract class EnemySettingsDto {
     private float reloadInterval;
     private float height;
     private int hp;
+    private Vector2 warpV;
+    private float warpTime;
+    private boolean warpMode;
+
+    public boolean getWarpMode() {
+        return warpMode;
+    }
+
+    public void setWarpMode(boolean warpMode) {
+        this.warpMode = warpMode;
+    }
+
+    public Vector2 getWarpV() {
+        return warpV;
+    }
+
+    public void setWarpV(Vector2 warpV) {
+        this.warpV = warpV;
+    }
+
+    public float getWarpTime() {
+        return warpTime;
+    }
+
+    public void setWarpTime(float warpTime) {
+        this.warpTime = warpTime;
+    }
+
+
+    public float getExpectation() {
+        return expectation;
+    }
+
+    public void setExpectation(float expectation) {
+        this.expectation = expectation;
+    }
+
+    private float expectation; //Вероятность появления
 
     public TextureRegion[] getRegions() {
         return regions;

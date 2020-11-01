@@ -7,7 +7,9 @@ import com.badlogic.gdx.math.Vector2;
 import ru.anfy.math.Rect;
 import ru.anfy.utils.Regions;
 
-public abstract class Sprite extends ru.anfy.math.Rect {
+public abstract class Sprite extends Rect {
+
+    private static final int DEFAULT_TAIL_LENGTH = 10;
 
     protected float angle;
     protected float scale = 1;
@@ -15,12 +17,40 @@ public abstract class Sprite extends ru.anfy.math.Rect {
     protected int frame;
     protected boolean destroyed;
 
+    protected tailFrame[] tail; //Шлейф
+    protected int tailLength; //Длина шлейфа
+    public boolean showTail;
+
     public Sprite() {
     }
 
     public Sprite(TextureRegion region) {
         this.regions = new TextureRegion[1];
         regions[0] = region;
+    }
+
+    public void setTail(int length){
+        tail = new tailFrame[length];
+        tailLength = 0;
+        showTail = true;
+    }
+
+    public void resetTail(){
+        tailLength = 0;
+    }
+
+    public void clearTail(){
+        tail = null;
+        tailLength = 0;
+        showTail = false;
+    }
+
+    public void setTail(){
+        setTail(DEFAULT_TAIL_LENGTH);
+    }
+
+    public boolean hasTail(){
+        return !(tail == null);
     }
 
     public Sprite(TextureRegion region, int rows, int cols, int frames) {
@@ -34,14 +64,16 @@ public abstract class Sprite extends ru.anfy.math.Rect {
     }
 
     public void draw(SpriteBatch batch) {
-        batch.draw(
+        tailFrame.draw(this,
+                batch,
                 regions[frame],
                 getLeft(), getBottom(),
                 halfWidth, halfHeight,
                 getWidth(), getHeight(),
                 scale, scale,
                 angle
-                );
+        );
+
     }
 
     public void update(float delta) {
